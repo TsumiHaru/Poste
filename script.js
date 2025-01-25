@@ -27,13 +27,12 @@ class Client {
   
       let clientServi;
   
-      // Chercher client prio
+      // Chercher client prio dans la file
       const indexPrioritaire = this.clients.findIndex(client => client.prioritaire);
       if (indexPrioritaire !== -1) {
-        clientServi = this.clients.splice(indexPrioritaire, 1)[0];
+        clientServi = this.clients.splice(indexPrioritaire, 1)[0]; // retire le client prio 
       } else {
-        // servir le premier
-        clientServi = this.clients.shift();
+        clientServi = this.clients.shift(); // retire le premier client si pas de prio
       }
   
       alert(`${clientServi.nom} (Service: ${clientServi.serviceDemandé}) a été servi.`);
@@ -43,9 +42,9 @@ class Client {
   
     // amelioration possible -> liste cliquable 
     supprimerClient(nom) {
-      const index = this.clients.findIndex(client => client.nom === nom); 
+      const index = this.clients.findIndex(client => client.nom === nom); // trouve l'infex
       if (index !== -1) {
-        const clientSupprimé = this.clients.splice(index, 1)[0];
+        const clientSupprimé = this.clients.splice(index, 1)[0]; // retire de la file
         alert(`Le client ${nom} a été supprimé de la file.`);
         this.afficherHistorique(clientSupprimé);
         this.mettreAJourAffichage();
@@ -62,9 +61,9 @@ class Client {
   
     afficherHistorique(client) {
       const historiqueContainer = document.getElementById('historique-container');
-      const log = document.createElement('p');
-      log.textContent = `${client.nom} - ${client.serviceDemandé} a été servi.`;
-      historiqueContainer.appendChild(log);
+      const log = document.createElement('p'); // creer para
+      log.textContent = `${client.nom} - ${client.serviceDemandé} a été servi.`; // contenu para
+      historiqueContainer.appendChild(log); // ajout
     }
   
     mettreAJourAffichage() {
@@ -102,27 +101,29 @@ class Client {
       return;
     }
   
-    const nouveauClient = new Client(nom, serviceDemandé, tempsEstimé, prioritaire);
-    filePostale.ajouterClient(nouveauClient);
+    const nouveauClient = new Client(nom, serviceDemandé, tempsEstimé, prioritaire); // nouveau client
+    filePostale.ajouterClient(nouveauClient); // ajout
   
     e.target.reset();
   });
   
   // bouton 
+
+    // servir client (le premier automatiquement)
   document.getElementById('servir-client-btn').addEventListener('click', () => {
     const clientServi = filePostale.servirClient();
     if (clientServi) {
       filePostale.afficherHistorique(clientServi);
     }
   });
-  
+    //supprimer client (par nom)
   document.getElementById('supprimer-client-btn').addEventListener('click', () => {
     const nom = prompt("Entrez le nom du client à supprimer :").trim();
     if (nom) {
       filePostale.supprimerClient(nom);
     }
   });
-  
+    //trier par service (par catégorie)
   document.getElementById('trier-service-btn').addEventListener('click', () => {
     const categorie = prompt("Entrez la catégorie de service pour trier :").trim();
     if (categorie) {
