@@ -18,7 +18,6 @@ class Client {
       this.clients.push(client);
       this.mettreAJourAffichage();
     }
-  
     servirClient() {
       if (this.clients.length === 0) {
         alert("Aucun client en attente.");
@@ -86,7 +85,7 @@ class Client {
   }
   
   // demarrage du code
-  const filePostale = new FilePostale();
+  const filePostale = new FilePostale(); // instance 
   
   document.getElementById('ajouter-client-form').addEventListener('submit', (e) => {
     e.preventDefault();
