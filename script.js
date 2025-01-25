@@ -41,8 +41,9 @@ class Client {
       return clientServi;
     }
   
+    // amelioration possible -> liste cliquable 
     supprimerClient(nom) {
-      const index = this.clients.findIndex(client => client.nom === nom);
+      const index = this.clients.findIndex(client => client.nom === nom); 
       if (index !== -1) {
         const clientSupprimé = this.clients.splice(index, 1)[0];
         alert(`Le client ${nom} a été supprimé de la file.`);
@@ -53,8 +54,9 @@ class Client {
       }
     }
   
+    // amelioration possible -> liste cliquable 
     trierParService(categorie) {
-      this.clients = this.clients.filter(client => client.serviceDemandé === categorie);
+      this.clients = this.clients.filter(client => client.serviceDemandé === categorie); 
       this.mettreAJourAffichage();
     }
   
