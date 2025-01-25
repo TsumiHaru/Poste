@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulateur de file d'attente</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Simulateur de file d'attente</h1>
+  <form id="ajouter-client-form">
+    <input type="text" id="nom" placeholder="Nom" required>
+    <select id="service">
+      <option value="Envoi de courrier">Envoi de courrier</option>
+      <option value="Retrait de colis">Retrait de colis</option>
+      <option value="Paiement de facture">Paiement de facture</option>
+    </select>
+    <input type="number" id="temps-estimé" placeholder="Temps estimé (min)" required>
+    <label><input type="checkbox" id="prioritaire"> Prioritaire</label>
+    <button type="submit">Ajouter client</button>
+  </form>
+
+  <h2>File d'attente</h2>
+  <div id="file-container"></div>
+
+  <button id="servir-client-btn">Servir un client</button>
+  <button id="supprimer-client-btn">Supprimer un client</button>
+  <button id="trier-service-btn">Trier par service</button>
+
+
+  <h2>Historique des clients servis</h2>
+  <div id="historique-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
