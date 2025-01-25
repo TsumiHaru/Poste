@@ -27,7 +27,7 @@ class Client {
   
       let clientServi;
   
-      // chercher client prio
+      // Chercher client prio
       const indexPrioritaire = this.clients.findIndex(client => client.prioritaire);
       if (indexPrioritaire !== -1) {
         clientServi = this.clients.splice(indexPrioritaire, 1)[0];
